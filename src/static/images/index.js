@@ -35,5 +35,10 @@ export { default as address} from './address.png';
 export { default as coupon} from './coupon.png';
 
 
+export { default as goldMedal} from './gold_medal.png';
+export { default as copperMedal} from './copper_medal.png';
+export { default as silverMedal} from './silver_medal.png';
+
+
 
 
