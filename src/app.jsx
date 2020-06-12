@@ -34,7 +34,8 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/magazine/subscription',
+      'pages/magazine/index', //杂志首页
+      'pages/magazine/subscription',//杂志订阅排行榜
       'pages/index/index',
       'pages/ucenter/index/index',
       'pages/ucenter/address/address',

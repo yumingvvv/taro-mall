@@ -54,21 +54,21 @@ class Index extends Component {
       <View className='subscription'>
 
         <View className='cover'>
-          <Image src={cover} className='cover__img' mode={"widthFix"}/>
+          <Image src={cover} className='cover__img' mode='widthFix' />
         </View>
 
-        <View className="ranking-card">
+        <View className='ranking-card'>
           {leadArr.map((it, index) => {
             return <View className={classnames('ranking-card__item', {'ranking-card__item--large': index === 1})}>
-              <AtAvatar circle image={it.headimg} text={it.name} size={index === 1 ? 'large' : 'default'}/>
+              <AtAvatar circle image={it.headimg} text={it.name} size={index === 1 ? 'large' : 'default'} />
               <Text className='ranking-card__name'>{it.name}</Text>
               <Text className='ranking-card__number'>{it.number}次订阅</Text>
-              <Image className='ranking-card__icon' src={this.cardIcon[index]}/>
+              <Image className='ranking-card__icon' src={this.cardIcon[index]} />
             </View>
           })}
         </View>
 
-        <View className="ranking-list">
+        <View className='ranking-list'>
 
           <View className={classnames('ranking-list__header')}>
             <Text className='text'>排名</Text>
@@ -78,9 +78,9 @@ class Index extends Component {
           {listArr.map((it, index) => {
             return <View className={classnames('ranking-list__item')}>
               <Text className='ranking-list__number'>{index + 4}</Text>
-              <View className="ranking-list__content">
-                <View className="ranking-list__user">
-                  <AtAvatar circle image={it.headimg} text={it.name} size={"small"}/>
+              <View className='ranking-list__content'>
+                <View className='ranking-list__user'>
+                  <AtAvatar circle image={it.headimg} text={it.name} size='small' />
                   <Text className='ranking-list__name'>{it.name}</Text>
                 </View>
                 <Text className='ranking-list__number'>{it.number}次</Text>
