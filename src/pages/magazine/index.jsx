@@ -56,6 +56,7 @@ class Index extends Component {
     this.setState({curTab: index})
   };
 
+
   render() {
     const {recommend, classify, listObj, curTab} = this.state;
     return (
@@ -87,21 +88,21 @@ class Index extends Component {
 
           {classify.map((it, index) => {
             const magazineList = it.id in listObj && listObj[it.id];
-            return <AtTabsPane current={curTab} index={index}>
+            return <AtTabsPane current={curTab} index={index} key={it.id}>
               <View className='magazine'>
                 {magazineList ? magazineList.map((magazine, magazineIndex) => {
-                    return <View>
-                      {index === 0 &&
-                      <Text className={`magazine__index magazine__index--${magazineIndex + 1}`}>
+                    return <View key={magazine.id} className='magazine__wrap'>
+                      <Text className={`magazine__index magazine__index--${magazineIndex + 1}`}
+                            style={{opacity: index === 0 ? 1 : 0}}>
                         {magazineIndex + 1}
-                      </Text>}
+                      </Text>
                       <Navigator
                         url={`/pages/magazine/detail?id=${magazine.id}`}
                         className='magazine__item'
                       >
                         <Image className='magazine__cover' src={magazine.cover}/>
                         <Text className='magazine__title'>{magazine.title}</Text>
-                        <Text className='magazine__number'>{magazine.number}</Text>
+                        <Text className='magazine__number'>{magazine.number}次订阅</Text>
                       </Navigator>
                     </View>
                   }) :
