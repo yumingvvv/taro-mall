@@ -39,6 +39,8 @@ export { default as goldMedal} from './gold_medal.png';
 export { default as copperMedal} from './copper_medal.png';
 export { default as silverMedal} from './silver_medal.png';
 
+export { default as linkIcon} from './link.png';
+
 
 
 

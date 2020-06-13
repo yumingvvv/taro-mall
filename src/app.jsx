@@ -1,5 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
-import { Provider } from '@tarojs/redux'
+import Taro, {Component} from '@tarojs/taro'
+import {Provider} from '@tarojs/redux'
 import 'taro-ui/dist/style/index.scss';
 import dva from './dva';
 import models from './models';
@@ -34,8 +34,10 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/magazine/obtain', //获取杂志：购买、兑换
       'pages/magazine/index', //杂志首页
       'pages/magazine/subscription',//杂志订阅排行榜
+
       'pages/index/index',
       'pages/ucenter/index/index',
       'pages/ucenter/address/address',
@@ -116,13 +118,13 @@ class App extends Component {
   }
 
   update = () => {
-    if(process.env.TARO_ENV === 'weapp') {
+    if (process.env.TARO_ENV === 'weapp') {
       const updateManager = Taro.getUpdateManager();
-      Taro.getUpdateManager().onUpdateReady(function() {
+      Taro.getUpdateManager().onUpdateReady(function () {
         Taro.showModal({
           title: '更新提示',
           content: '新版本已经准备好，是否重启应用？',
-          success: function(res) {
+          success: function (res) {
             if (res.confirm) {
               // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
               updateManager.applyUpdate()
@@ -133,7 +135,7 @@ class App extends Component {
     }
   }
 
-  componentDidShow () {
+  componentDidShow() {
     user.checkLogin().then(res => {
       setGlobalData('hasLogin', true);
     }).catch(() => {
@@ -141,19 +143,21 @@ class App extends Component {
     });
   }
 
-  componentDidHide () {}
+  componentDidHide() {
+  }
 
-  componentDidCatchError () {}
+  componentDidCatchError() {
+  }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render () {
+  render() {
     return (
       <Provider store={store}>
-        <Index />
+        <Index/>
       </Provider>
     )
   }
 }
 
-Taro.render(<App />, document.getElementById('app'))
+Taro.render(<App/>, document.getElementById('app'))

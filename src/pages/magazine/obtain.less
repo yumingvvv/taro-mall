@@ -1,0 +1,152 @@
+.obtain {
+
+  .swiper {
+    &, &__item, &__img {
+      width: 100vw;
+      height: calc(100vh - 110px);
+    }
+  }
+
+  .info {
+    position: fixed;
+    right: 0;
+    bottom: 24vh;
+    left: 0;
+    text-align: center;
+    color: white;
+
+    .number {
+      display: block;
+      font-size: 26px;
+      color: #e9e9e9;
+    }
+
+    .name {
+      display: block;
+      font-size: 40px;
+      color: white;
+      margin: 20px auto;
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+
+      &__icon {
+        width: 34px;
+        height: 34px;
+        margin-right: 10px;
+      }
+
+      &__text {
+        color: #e9e9e9;
+        font-size: 30px;
+      }
+    }
+  }
+
+  .footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: 110px;
+    background-color: white;
+    border-top: 1PX solid #f2f2f2;
+
+    &__btn {
+      flex: 1;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      line-height: 100px;
+      text-align: center;
+      border-radius: 0;
+      color: black;
+      background-color: white;
+
+      &:after {
+        border: none;
+      }
+
+      &.black {
+        color: white;
+        background-color: black;
+      }
+    }
+  }
+
+  .at-float-layout__container {
+    min-height: 480px;
+    border-radius: 20px 20px 0 0;
+  }
+
+
+  .at-float-layout {
+    .layout-body {
+      padding: 20px 30px;
+      min-height: 480px;
+
+      &__content {
+        min-height: 460px;
+      }
+    }
+  }
+
+  .float-layout {
+    &__title {
+      display: block;
+      font-size: 40px;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    &__desc {
+      display: block;
+      color: #888;
+      font-size: 28px;
+    }
+
+    &__input {
+      display: block;
+      color: #666;
+      height: 70px;
+      line-height: 70px;
+      padding: 10px 40px;
+      margin: 36px auto;
+      border-radius: 100px;
+      background-color: #f2f2f2;
+    }
+  }
+
+  .btn-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .btn {
+      width: 46%;
+      margin: 0;
+      border-radius: 40px;
+
+      &:after {
+        border: none;
+      }
+
+      &-cancel {
+        background-color: #ecedf1;
+      }
+
+      &-confrim {
+        color: white;
+        background-color: #f4333c;
+      }
+    }
+  }
+
+}
