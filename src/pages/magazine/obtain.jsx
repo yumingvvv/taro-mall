@@ -106,7 +106,7 @@ class Index extends Component {
 
         <AtFloatLayout isOpened={isOpenFloat} onClose={this.onToggleFloatLayout.bind(this)}>
           <Text className='float-layout__title'>请输入您的阅读码</Text>
-          <Text className='float-layout__desc'>使用阅读码成功兑换期刊后，可免费阅读期刊，已兑换过的期刊无法再次兑换，可将阅读码分享给其他好有。</Text>
+          <Text className='float-layout__desc'>使用阅读码成功兑换期刊后，可免费阅读期刊，已兑换过的期刊无法再次兑换，可将阅读码分享给其他好友。</Text>
           <Input
             placeholder='输入阅读码'
             value={exchangeCode}
