@@ -5,3 +5,6 @@ deploy_versions/
 node_modules/
 .DS_Store
 deploy.sh
+.idea
+*.iml
+__tests__
