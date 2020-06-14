@@ -34,6 +34,8 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/magazine/buy-explain', // 购买说明
+      'pages/magazine/buy', // 杂志购买
       'pages/magazine/obtain', //获取杂志：购买、兑换
       'pages/magazine/index', //杂志首页
       'pages/magazine/subscription',//杂志订阅排行榜
