@@ -34,6 +34,7 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/magazine/feedback', //  意见反馈
       'pages/magazine/help', //  使用帮助
       'pages/magazine/buy-explain', // 购买说明
       'pages/magazine/buy', // 杂志购买
