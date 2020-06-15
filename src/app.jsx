@@ -34,16 +34,16 @@ class App extends Component {
 
   config = {
     pages: [
-
+      'pages/magazine/index', //杂志首页
+      'pages/magazine/read-code', //  我的阅读码
+      'pages/magazine/magazine-order', //  我的杂志订单
       'pages/magazine/my', //  我的账户
       'pages/magazine/userinfo-edit', //   完善个人资料
-
       'pages/magazine/feedback', //  意见反馈
       'pages/magazine/help', //  使用帮助
       'pages/magazine/buy-explain', // 购买说明
       'pages/magazine/buy', // 杂志购买
       'pages/magazine/obtain', //获取杂志：购买、兑换
-      'pages/magazine/index', //杂志首页
       'pages/magazine/subscription',//杂志订阅排行榜
 
       'pages/index/index',
@@ -86,25 +86,20 @@ class App extends Component {
       "selectedColor": "#AB956D",
       "color": "#666",
       "list": [{
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/magazine/index",
         "iconPath": './static/images/home.png',
         "selectedIconPath": './static/images/home@selected.png',
-        "text": "首页"
-      }, {
-        "pagePath": "pages/catalog/catalog",
-        "iconPath": './static/images/category.png',
-        "selectedIconPath": './static/images/category@selected.png',
-        "text": "分类"
-      }, {
-        "pagePath": "pages/cart/cart",
+        "text": "电子杂志"
+      },  {
+        "pagePath": "pages/index/index",
         "iconPath": './static/images/cart.png',
         "selectedIconPath": './static/images/cart@selected.png',
-        "text": "购物车"
+        "text": "实体商城"
       }, {
-        "pagePath": 'pages/ucenter/index/index',
+        "pagePath": 'pages/magazine/my',
         "iconPath": './static/images/my.png',
         "selectedIconPath": './static/images/my@selected.png',
-        "text": "个人"
+        "text": "我的账户"
       }]
     },
     subpackages: [{

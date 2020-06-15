@@ -72,8 +72,8 @@ class Index extends Component {
             return <SwiperItem key={it.id} className='recommend__item'>
               <Text className='recommend__title'>{it.title}</Text>
               <Text className='recommend__number'>{it.number}次订阅</Text>
-              <Navigator url={`/pages/magazine/detail?id=${it.id}`}>
-                <Image className='recommend__cover' src={it.cover}/>
+              <Navigator url={`/pages/magazine/obtain?id=${it.id}`}>
+                <Image className='recommend__cover' src={it.cover} />
               </Navigator>
             </SwiperItem>
           })}
@@ -93,14 +93,15 @@ class Index extends Component {
                 {magazineList ? magazineList.map((magazine, magazineIndex) => {
                     return <View key={magazine.id} className='magazine__wrap'>
                       <Text className={`magazine__index magazine__index--${magazineIndex + 1}`}
-                            style={{opacity: index === 0 ? 1 : 0}}>
+                        style={{opacity: index === 0 ? 1 : 0}}
+                      >
                         {magazineIndex + 1}
                       </Text>
                       <Navigator
-                        url={`/pages/magazine/detail?id=${magazine.id}`}
+                        url={`/pages/magazine/obtain?id=${magazine.id}`}
                         className='magazine__item'
                       >
-                        <Image className='magazine__cover' src={magazine.cover}/>
+                        <Image className='magazine__cover' src={magazine.cover} />
                         <Text className='magazine__title'>{magazine.title}</Text>
                         <Text className='magazine__number'>{magazine.number}次订阅</Text>
                       </Navigator>
