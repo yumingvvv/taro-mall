@@ -1,7 +1,7 @@
 import Taro, {Component} from '@tarojs/taro';
-import {Image, View, Text, Navigator} from '@tarojs/components';
+import {View, Picker, Input} from '@tarojs/components';
+import {AtList, AtListItem} from "taro-ui";
 import './userinfo-edit.less';
-import {AtAvatar} from "taro-ui";
 
 class Index extends Component {
 
@@ -14,8 +14,7 @@ class Index extends Component {
     name: '名字名字名字',
     headimg: 'http://yanxuan.nosdn.127.net/ca6d234917832d759c2905c2094b2a54.png',
     sex: 1,
-    magazineNum: 1,
-    codeNum: 1
+    birthday: '2020-11-11'
   };
 
 
@@ -37,11 +36,69 @@ class Index extends Component {
   componentDidHide() {
   }
 
+  onChangeSex = e => {
+    const sexArr = [
+      '女', '男'
+    ];
+    this.setState({sex: sexArr[e.detail.value]})
+  };
+
+  onChangeDate = e => {
+    this.setState({birthday: e.detail.value})
+  };
+
 
   render() {
-    const {id, name, headimg, codeNum, sex, magazineNum} = this.state;
+    const {name, sex, birthday} = this.state;
     return (
       <View className='userinfo-edit'>
+
+        {/* 按照taro-ui list的布局*/}
+        <View className='at-list at-list--no-border'>
+          <View className='at-list__item at-list--no-border'>
+            <View className='at-list__item-container'>
+              <View className='at-list__item-content item-content'>
+                <View className='item-content__info'>
+                  <View className='item-content__info-title'>昵称</View>
+                </View>
+              </View>
+              <View className='at-list__item-extra item-extra'>
+                <View className='item-extra__info'>
+                  <Input
+                    placeholder='请输入昵称'
+                    value={name}
+                    onInput={event => {
+                      this.setState({name: event.detail.value})
+                    }}
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+
+
+        <Picker mode='selector' range={['男', '女']} onChange={this.onChangeSex}>
+          <AtList hasBorder={false}>
+            <AtListItem
+              title='性别'
+              arrow='right'
+              hasBorder={false}
+              extraText={sex === 1 ? '男' : '女'}
+            />
+          </AtList>
+        </Picker>
+
+        <Picker mode='date' onChange={this.onChangeDate}>
+          <AtList hasBorder={false}>
+            <AtListItem
+              title='出生日期'
+              arrow='right'
+              hasBorder={false}
+              extraText={birthday || '选择日期'}
+            />
+          </AtList>
+        </Picker>
 
       </View>
     );
