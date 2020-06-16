@@ -63,10 +63,12 @@ class Index extends Component {
         <View className='buy-box'>
           <Text className='buy-box__title'>购买数量</Text>
           <RadioGroup className='buy-number'>
-            {[1, 10, 100, 500].map(it => {
+            {[1, 10, 100, 500].map((it, index) => {
               return <Label key={it} className='buy-number__item'>
                 <View>
-                  <Radio color='red' className='buy-number__radio' />
+                  {process.env.TARO_ENV === 'h5' ?
+                    <Radio checked={index === 0} /> :
+                    <Radio color='red' checked={index === 0} className='buy-number__radio' />}
                   <Text className='buy-number__text'>购买{it}本</Text>
                 </View>
                 <Text className='buy-number__price'>￥{price * it}</Text>
@@ -74,7 +76,10 @@ class Index extends Component {
             })}
             <Label className='buy-number__item'>
               <View>
-                <Radio color='red' className='buy-number__radio' />
+                {process.env.TARO_ENV === 'h5' ?
+                  <Radio /> :
+                  <Radio color='red' className='buy-number__radio' />}
+
                 <AtInputNumber
                   type='number'
                   value={1}

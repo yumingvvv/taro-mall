@@ -61,6 +61,16 @@
       transform: scale(0.8);
     }
 
+    // h5兼容
+    .weui-cells_checkbox .weui-icon-checked::before {
+      font-size: 18PX;
+      margin-right: 10px;
+    }
+
+    .weui-cells_checkbox .weui-check:checked + .weui-icon-checked::before {
+      color: red;
+    }
+
     &__text {
       font-size: 28px;
     }
@@ -88,6 +98,8 @@
     background-color: #f4333c;
     border-radius: 40px;
     font-size: 30px;
+    border: none;
+    outline: none;
 
     &:after {
       border: none;
