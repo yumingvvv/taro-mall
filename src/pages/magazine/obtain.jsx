@@ -1,5 +1,5 @@
 import Taro, {Component} from '@tarojs/taro';
-import {Image, View, Text, Swiper, SwiperItem, Navigator} from '@tarojs/components';
+import {Image, View, Text, Swiper, SwiperItem, Navigator, Button, Input} from '@tarojs/components';
 import {AtFloatLayout} from "taro-ui";
 import './obtain.less';
 import {linkIcon} from "../../static/images";
@@ -80,26 +80,28 @@ class Index extends Component {
           circular
           indicatorDots
           indicatorActiveColor='#c32830'
-          className='swiper'>
+          className='swiper'
+        >
           {swiperImg.map(it => {
             return <SwiperItem
               key={it.imgUrl}
-              className='swiper__item'>
-              <Image className='swiper__img' src={it.imgUrl}/>
+              className='swiper__item'
+            >
+              <Image className='swiper__img' src={it.imgUrl} />
             </SwiperItem>
           })}
         </Swiper>
 
-        <View className="info">
+        <View className='info'>
           <Text className='number'>{number}次订阅</Text>
           <Text className='name'>{name}</Text>
           <Navigator className='link' url={`/pages/magazine/subscription?id=-${id}`}>
-            <Image className='link__icon' src={linkIcon}/>
+            <Image className='link__icon' src={linkIcon} />
             <Text className='link__text'>点击查看订阅排行榜</Text>
           </Navigator>
         </View>
 
-        <View className="footer">
+        <View className='footer'>
           <Button className='footer__btn' onClick={this.onBuy}>购买阅读码</Button>
           <Button className='footer__btn black' onClick={this.onToggleFloatLayout}>使用阅读码</Button>
         </View>
@@ -115,9 +117,9 @@ class Index extends Component {
               this.setState({exchangeCode: event.detail.value})
             }}
           />
-          <View className="btn-group">
-            <Button className="btn btn-cancel" onClick={this.onToggleFloatLayout}>取消</Button>
-            <Button className="btn btn-confrim" onClick={this.onExchange}>确定</Button>
+          <View className='btn-group'>
+            <Button className='btn btn-cancel' onClick={this.onToggleFloatLayout}>取消</Button>
+            <Button className='btn btn-confrim' onClick={this.onExchange}>确定</Button>
           </View>
         </AtFloatLayout>
 

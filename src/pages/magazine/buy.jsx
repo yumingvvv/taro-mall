@@ -49,10 +49,10 @@ class Index extends Component {
     return (
       <View className='buy'>
 
-        <View className="buy-box">
+        <View className='buy-box'>
           <Text className='buy-box__title'>正在购买</Text>
           <View className='goods'>
-            <Image src={cover} className='goods__cover'/>
+            <Image src={cover} className='goods__cover' />
             <View className='goods__content'>
               <Text className='goods__name'>{name}</Text>
               <Text className='goods__price'>￥{price}</Text>
@@ -66,7 +66,7 @@ class Index extends Component {
             {[1, 10, 100, 500].map(it => {
               return <Label key={it} className='buy-number__item'>
                 <View>
-                  <Radio color='red' className='buy-number__radio'/>
+                  <Radio color='red' className='buy-number__radio' />
                   <Text className='buy-number__text'>购买{it}本</Text>
                 </View>
                 <Text className='buy-number__price'>￥{price * it}</Text>
@@ -74,20 +74,21 @@ class Index extends Component {
             })}
             <Label className='buy-number__item'>
               <View>
-                <Radio color='red' className='buy-number__radio'/>
+                <Radio color='red' className='buy-number__radio' />
                 <AtInputNumber
-                  type={'number'}
+                  type='number'
                   value={1}
                   min={1}
                   disabledInput
                   onChange={ev => {
                     console.log(ev);
-                  }}/>
+                  }}
+                />
               </View>
               <Text className='buy-number__price'>￥{price}</Text>
             </Label>
           </RadioGroup>
-          <Navigator className='buy-explain' url={`/pages/magazine/buy-explain`}>查看购买说明</Navigator>
+          <Navigator className='buy-explain' url='/pages/magazine/buy-explain'>查看购买说明</Navigator>
         </View>
 
         <Button className='btn-confrim' onClick={this.onConfrimBuy}>确认购买</Button>
