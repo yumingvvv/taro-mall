@@ -12,9 +12,9 @@ class Index extends Component {
   state = {
     recommend: Array(10).fill({
       id: (Math.random() * 100) + '',
-      title: '郑云龙&阿云嘎：呼朋引伴',
+      title: '左卓：有人在等我',
       number: 454,
-      cover: 'http://yanxuan.nosdn.127.net/ca6d234917832d759c2905c2094b2a54.png'
+      cover: 'http://yanxuan.nosdn.127.net/aa61b539c0f3ad675dbfd12d6fb64254.png'
     }),
     classify: Array(10).fill({
       id: 'id',
@@ -24,9 +24,9 @@ class Index extends Component {
       // 以分类id当做键值
       'id': Array(10).fill({
         id: (Math.random() * 100) + '',
-        title: '郑云龙&阿云嘎：呼朋引伴',
+        title: '左卓：有人在等我',
         number: 454,
-        cover: 'http://yanxuan.nosdn.127.net/ca6d234917832d759c2905c2094b2a54.png'
+        cover: 'http://yanxuan.nosdn.127.net/aa61b539c0f3ad675dbfd12d6fb64254.png'
       })
     },
     curTab: 0,

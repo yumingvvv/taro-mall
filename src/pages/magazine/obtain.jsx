@@ -15,8 +15,11 @@ class Index extends Component {
     name: '名字名字名字名字名字名字名字名字',
     number: 124,
     swiperImg: Array(4).fill({
-      imgUrl: 'http://yanxuan.nosdn.127.net/ca6d234917832d759c2905c2094b2a54.png'
-    }),
+        imgUrl: 'http://yanxuan.nosdn.127.net/aa61b539c0f3ad675dbfd12d6fb64254.png'
+      },
+      {
+        imgUrl: 'http://yanxuan.nosdn.127.net/3dc2f889100928735ca662a71fbca862.jpg'
+      }),
     isOpenFloat: false,
     exchangeCode: ''
   };
@@ -87,7 +90,7 @@ class Index extends Component {
               key={it.imgUrl}
               className='swiper__item'
             >
-              <Image className='swiper__img' src={it.imgUrl} />
+              <Image className='swiper__img' src={it.imgUrl}/>
             </SwiperItem>
           })}
         </Swiper>
@@ -96,7 +99,7 @@ class Index extends Component {
           <Text className='number'>{number}次订阅</Text>
           <Text className='name'>{name}</Text>
           <Navigator className='link' url={`/pages/magazine/subscription?id=-${id}`}>
-            <Image className='link__icon' src={linkIcon} />
+            <Image className='link__icon' src={linkIcon}/>
             <Text className='link__text'>点击查看订阅排行榜</Text>
           </Navigator>
         </View>
