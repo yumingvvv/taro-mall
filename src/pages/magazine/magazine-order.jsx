@@ -48,7 +48,7 @@ class Index extends Component {
                 {magazineIndex + 1}
               </Text>
               <Navigator
-                url={`/pages/magazine/detail?id=${magazine.id}`}
+                url={`/pages/magazine/obtain?id=${magazine.id}`}
                 className='magazine__item'
               >
                 <Image className='magazine__cover' src={magazine.cover}/>
