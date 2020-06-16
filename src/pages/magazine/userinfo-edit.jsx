@@ -12,7 +12,7 @@ class Index extends Component {
   state = {
     id: 'id',
     name: '名字名字名字',
-    headimg: 'http://yanxuan.nosdn.127.net/ca6d234917832d759c2905c2094b2a54.png',
+    headimg: 'http://yanxuan.nosdn.127.net/3dc2f889100928735ca662a71fbca862.jpg',
     sex: 1,
     birthday: '2020-11-11'
   };

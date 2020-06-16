@@ -13,7 +13,7 @@ class Index extends Component {
       id: (Math.random() * 100) + '',
       title: '郑云龙&阿云嘎：呼朋引伴',
       time: '06-15 12:12',
-      cover: 'http://yanxuan.nosdn.127.net/ca6d234917832d759c2905c2094b2a54.png'
+      cover: 'http://yanxuan.nosdn.127.net/3dc2f889100928735ca662a71fbca862.jpg'
     }),
   };
 
