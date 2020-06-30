@@ -10,8 +10,12 @@ class Index extends Component {
   };
 
   state = {
-    id: 'id',
-    name: '名字名字名字名字名字名字名字名字',
+    id: '8',
+    author_id: '0',
+    userId: '24',
+    userOpenId: 'oMvjs4iVK_fyx8hJQAwDQA6w5EiM',
+    userFopenId: 'null',
+    name: '杂志名字',
     cover: 'http://yanxuan.nosdn.127.net/3dc2f889100928735ca662a71fbca862.jpg',
     price: 8,
     buyNumber: 1
@@ -41,8 +45,64 @@ class Index extends Component {
     Taro.showToast({
       icon: 'success',
       title: '购买！'
-    })
+    });
+    this.pay();
   };
+
+  pay = (t) => {
+    let wx = Taro;
+    let _function = Taro.getApp().config._function;
+    var e = this;
+
+    var a = wx.getStorageSync("fxid");
+
+    // i = wx.getStorageSync("fx_pay_type");
+    // this.data.userInfo.fopenid || "scene" != i || _function.request("entry/wxapp/Binding", {
+    //     fxid: a,
+    //     fx_pay_type: i,
+    //     uid: this.data.userInfo.id
+    // }, "", function(t) {}, this, "POST");
+
+    var n = 1;//t.currentTarget.dataset.types;
+    var o = '9.90'; //t.currentTarget.dataset.money;
+    var s = 11;//t.currentTarget.dataset.vid;
+    var day = 1;//t.currentTarget.dataset.day;
+
+    // a = a == this.data.userInfo.id ? "" : a;
+debugger;
+    _function.request("entry/wxapp/Pay", {
+        id: e.state.id,
+        author_id: e.state.author_id,
+        uid: e.state.userId,
+        openid: e.state.userOpenId,
+        money: o,
+        types: n,
+        day: day,
+        fxid: a,
+        fopenid: e.state.userFopenId,
+        vid: s
+    }, "", function(t) {
+        var a = e;
+        debugger;
+        1 == t.state ? wx.requestPayment({
+            timeStamp: t.timeStamp,
+            nonceStr: t.nonceStr,
+            package: t.package,
+            signType: "MD5",
+            paySign: t.paySign,
+            success: function(t) {
+              debugger;
+                // wx.playBackgroundAudio({
+                //     dataUrl: a.data.datum.article.bg_music,
+                //     complete: a.onPlay
+                // });
+            },
+            fail: function(t) {
+                _function.hint(3, "支付失败^_^!", "网络提示", function(t) {});
+            }
+        }) : _function.hint(1, "网络错误！", "", function(t) {});
+    }, this, "POST");
+}
 
   render() {
     const {id, name, cover, price, buyNumber} = this.state;

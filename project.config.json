@@ -1,8 +1,8 @@
 {
 	"miniprogramRoot": "dist/",
-	"projectname": "xiaochengxu-shop",
-	"description": "Taro-Mall多端小程序商城",
-	"appid": "wxd91bfd2bf435ffad",
+	"projectname": "yuedu",
+	"description": "付费阅读",
+	"appid": "wx9a58de16bf598a9d",
 	"setting": {
 		"urlCheck": false,
 		"es6": false,

@@ -1,0 +1,157 @@
+.index {
+  width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.recommend {
+  height: 900px;
+  background-color: white;
+
+  &__item {
+
+  }
+
+  &__title {
+    display: block;
+    color: #000;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__number {
+    display: block;
+    font-size: 24px;
+    color: #888;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  &__cover {
+    display: block;
+    width: 90%;
+    height: 700px;
+    margin: 20px auto;
+  }
+}
+
+// 覆盖taroui样式
+.at-tabs {
+  margin-top: 20px;
+
+  &__item {
+    color: #666;
+
+    &--active {
+      color: #000;
+      font-weight: bold;
+    }
+
+    &-underline {
+      background-color: #000;
+      width: 50%;
+      height: 3PX;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  }
+}
+
+.magazine {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  &__index {
+    display: inline-block;
+    color: white;
+    font-size: 20px;
+    background-color: #d9d9d7;
+    width: 34px;
+    height: 40px;
+    text-align: center;
+    line-height: 36px;
+    margin-right: 10px;
+    margin-top: 10px;
+    position: relative;
+
+    &:after {
+      content: ' ';
+      width: 0;
+      height: 0;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-bottom: 10px solid #f2f2f2;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+    }
+
+    &--1 {
+      background-color: #c7a670;
+    }
+
+    &--2 {
+      background-color: #b8b2b2;
+    }
+
+    &--3 {
+      background-color: #b29e82;
+    }
+  }
+
+  &__wrap {
+    display: inline-flex;
+    align-items: start;
+    width: 44%;
+    box-sizing: border-box;
+    margin: 2%;
+  }
+
+  &__item {
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px 4px #e6e6e6;
+    background-color: white;
+    overflow: hidden;
+  }
+
+  &__cover {
+    width: 100%;
+    height: 400px;
+  }
+
+  &__title {
+    display: block;
+    height: 100px;
+    color: #000;
+    font-size: 28px;
+    overflow: hidden;
+    padding: 10px 4%;
+  }
+
+  &__number {
+    display: block;
+    font-size: 24px;
+    color: #888;
+    padding: 10px 4%;
+  }
+}
+
+// 空白提示
+.null-tips {
+  display: block;
+  margin: 100px auto;
+  text-align: center;
+  color: #666;
+  font-size: 30px;
+}

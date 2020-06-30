@@ -5,11 +5,13 @@ import {AtTabs, AtTabsPane} from "taro-ui";
 
 class Index extends Component {
 
-  config = {
-    navigationBarTitleText: 'BOX电子杂志'
-  };
+  
 
   state = {
+    is_pay: false,
+    dg_article_title: '',
+    wxapp_article_hottitle: '',
+    wxapp_serialize_newtitle: '',
     recommend: Array(10).fill({
       id: (Math.random() * 100) + '',
       title: '左卓：有人在等我',
@@ -32,6 +34,9 @@ class Index extends Component {
     curTab: 0,
   };
 
+  config = {
+    navigationBarTitleText: "凝iDEAL"
+  };
 
   componentWillMount() {
   }
@@ -39,6 +44,8 @@ class Index extends Component {
   componentDidMount() {
     // 页面初始化 options为页面跳转所带来的参数
     // const {id} = this.$router.params;
+
+    this.getDatum();
 
   }
 
@@ -55,6 +62,33 @@ class Index extends Component {
   clickTab = (index) => {
     this.setState({curTab: index})
   };
+
+
+  getDatum = () => {
+    var a = this;
+    let app = Taro.getApp().config;
+    var _function = app._function;
+
+    _function.request("entry/wxapp/Index", {}, "", function(t) {
+        if (app.globalData.msgsh = t.modules.msgsh, app.globalData.artsh = t.modules.artsh, 
+        app.globalData.vipCon = t.modules.vipCon,
+        console.log(t),
+        // a.setData({
+        //     datum: t
+        // }),
+        t.modules) {
+            Taro.setStorageSync("is_pay", t.modules.is_pay);
+            var e = Taro.getStorageSync("is_pay");
+
+            a.setState({
+              is_pay: 1 == e,
+              dg_article_title: t.modules.dg_article_title,
+              wxapp_article_hottitle: t.modules.wxapp_article_hottitle,
+              wxapp_serialize_newtitle: t.modules.w
+            });
+        }
+    }, this, "POST");
+};
 
 
   render() {

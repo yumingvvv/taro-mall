@@ -8,6 +8,7 @@ import {set as setGlobalData, get as getGlobalData} from './global_data';
 
 import Index from './pages/index'
 
+
 // import configStore from './store'
 
 import './app.less'
@@ -19,6 +20,7 @@ import './app.less'
 // }
 
 // const store = configStore()
+
 
 const dvaApp = dva.createApp({
   initialState: {},
@@ -34,45 +36,18 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/magazine/index', //杂志首页
-      'pages/magazine/read-code', //  我的阅读码
-      'pages/magazine/magazine-order', //  我的杂志订单
-      'pages/magazine/my', //  我的账户
-      'pages/magazine/userinfo-edit', //   完善个人资料
-      'pages/magazine/feedback', //  意见反馈
-      'pages/magazine/help', //  使用帮助
-      'pages/magazine/buy-explain', // 购买说明
-      'pages/magazine/buy', // 杂志购买
-      'pages/magazine/obtain', //获取杂志：购买、兑换
-      'pages/magazine/subscription',//杂志订阅排行榜
-
+      'pages/magazine-home/index',//杂志首页
+      'pages/magazine-ucenter/my', //  我的账户
       'pages/index/index',
-      'pages/ucenter/index/index',
-      'pages/ucenter/address/address',
-      'pages/ucenter/addressAdd/addressAdd',
-      'pages/auth/login/login',
-      'pages/checkout/checkout',
-
-      'pages/auth/accountLogin/accountLogin',
-      'pages/goods/goods',
-      'pages/search/search',
-      'pages/catalog/catalog',
-      'pages/cart/cart',
-
-      'pages/auth/register/register',
-      'pages/ucenter/order/order',
-      'pages/ucenter/orderDetail/orderDetail',
-      'pages/ucenter/aftersaleList/aftersaleList',
-      'pages/ucenter/couponList/couponList',
-      'pages/groupon/myGroupon/myGroupon',
-      'pages/ucenter/collect/collect',
-      'pages/ucenter/footprint/footprint',
-      'pages/ucenter/couponSelect/couponSelect',
       'pages/payResult/payResult',
-      'pages/category/category',
-      'pages/coupon/coupon',
-      'pages/auth/reset/reset'
-
+          'pages/checkout/checkout',
+        'pages/goods/goods',
+        'pages/search/search',
+        'pages/catalog/catalog',
+        'pages/cart/cart',
+        'pages/groupon/myGroupon/myGroupon',
+        'pages/category/category',
+        'pages/coupon/coupon',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -80,13 +55,19 @@ class App extends Component {
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
     },
+    globalData: {
+      userInfo: null
+    },
+    util: require('./we7/resource/js/util.js'),
+    _function: require('./we7/resource/function/function.js'),
+    siteInfo: require('./siteInfo.js'),
     tabBar: {
       "backgroundColor": "#fafafa",
       "borderStyle": "white",
       "selectedColor": "#AB956D",
       "color": "#666",
       "list": [{
-        "pagePath": "pages/magazine/index",
+        "pagePath": "pages/magazine-home/index",
         "iconPath": './static/images/home.png',
         "selectedIconPath": './static/images/home@selected.png',
         "text": "电子杂志"
@@ -96,19 +77,69 @@ class App extends Component {
         "selectedIconPath": './static/images/cart@selected.png',
         "text": "实体商城"
       }, {
-        "pagePath": 'pages/magazine/my',
+        "pagePath": 'pages/magazine-ucenter/my',
         "iconPath": './static/images/my.png',
         "selectedIconPath": './static/images/my@selected.png',
         "text": "我的账户"
       }]
     },
     subpackages: [{
-      root: "packages",
-      name: "pack2",
+      root: "pages/magazine/",
+      name: "magazine",
       pages: [
-        'pages/demo/index'
+        'read-code', //  我的阅读码
+        'magazine-order', //  我的杂志订单
+        'userinfo-edit', //   完善个人资料
+        'feedback', //  意见反馈
+        'help', //  使用帮助
+        'buy-explain', // 购买说明
+        'buy', // 杂志购买
+        'obtain', //获取杂志：购买、兑换
+        'subscription',//杂志订阅排行榜
       ],
-    }],
+    },
+    {
+      root: "pages/ucenter/",
+      name: "ucenter",
+      pages: [
+        'index/index',
+        'address/address',
+        'addressAdd/addressAdd',
+        'order/order',
+        'orderDetail/orderDetail',
+        'aftersaleList/aftersaleList',
+        'couponList/couponList',
+        'collect/collect',
+        'footprint/footprint',
+        'couponSelect/couponSelect',
+        
+      ],
+    },
+    {
+      root: "pages/auth/",
+      name: "auth",
+      pages: [
+        'login/login',
+        'accountLogin/accountLogin',
+        'register/register',
+        'reset/reset'
+      ],
+    },
+    // {
+    //   root: "pages/goods/",
+    //   name: "goods",
+    //   pages: [
+    //     'pages/checkout/checkout',
+    //     'pages/goods/goods',
+    //     'pages/search/search',
+    //     'pages/catalog/catalog',
+    //     'pages/cart/cart',
+    //     'pages/groupon/myGroupon/myGroupon',
+    //     'pages/category/category',
+    //     'pages/coupon/coupon',
+    //   ]
+    // }
+  ],
     "networkTimeout": {
       "request": 10000,
       "downloadFile": 10000
