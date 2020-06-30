@@ -1,11 +1,11 @@
-import Taro, {Component} from '@tarojs/taro';
-import {Image, View, Text, Swiper, SwiperItem, Navigator} from '@tarojs/components';
+import Taro, { Component } from '@tarojs/taro';
+import { Image, View, Text, Swiper, SwiperItem, Navigator } from '@tarojs/components';
 import './index.less';
-import {AtTabs, AtTabsPane} from "taro-ui";
+import { AtTabs, AtTabsPane } from "taro-ui";
 
 class Index extends Component {
 
-  
+
 
   state = {
     is_pay: false,
@@ -60,7 +60,7 @@ class Index extends Component {
 
   // 点击杂志切换分类
   clickTab = (index) => {
-    this.setState({curTab: index})
+    this.setState({ curTab: index })
   };
 
 
@@ -69,30 +69,26 @@ class Index extends Component {
     let app = Taro.getApp().config;
     var _function = app._function;
 
-    _function.request("entry/wxapp/Index", {}, "", function(t) {
-        if (app.globalData.msgsh = t.modules.msgsh, app.globalData.artsh = t.modules.artsh, 
-        app.globalData.vipCon = t.modules.vipCon,
-        console.log(t),
-        // a.setData({
-        //     datum: t
-        // }),
-        t.modules) {
-            Taro.setStorageSync("is_pay", t.modules.is_pay);
-            var e = Taro.getStorageSync("is_pay");
+    _function.request("entry/wxapp/Index", {}, "", function (t) {
+      app.globalData.msgsh = t.modules.msgsh;
+      app.globalData.artsh = t.modules.artsh;
+      app.globalData.vipCon = t.modules.vipCon;
+      t.modules
+      Taro.setStorageSync("is_pay", t.modules.is_pay);
+      var e = Taro.getStorageSync("is_pay");
 
-            a.setState({
-              is_pay: 1 == e,
-              dg_article_title: t.modules.dg_article_title,
-              wxapp_article_hottitle: t.modules.wxapp_article_hottitle,
-              wxapp_serialize_newtitle: t.modules.w
-            });
-        }
+      a.setState({
+        is_pay: 1 == e,
+        dg_article_title: t.modules.dg_article_title,
+        wxapp_article_hottitle: t.modules.wxapp_article_hottitle,
+        wxapp_serialize_newtitle: t.modules.w
+      });
     }, this, "POST");
-};
+  };
 
 
   render() {
-    const {recommend, classify, listObj, curTab} = this.state;
+    const { recommend, classify, listObj, curTab } = this.state;
     return (
       <View className='index'>
 
@@ -125,22 +121,22 @@ class Index extends Component {
             return <AtTabsPane current={curTab} index={index} key={it.id}>
               <View className='magazine'>
                 {magazineList ? magazineList.map((magazine, magazineIndex) => {
-                    return <View key={magazine.id} className='magazine__wrap'>
-                      <Text className={`magazine__index magazine__index--${magazineIndex + 1}`}
-                        style={{opacity: index === 0 ? 1 : 0}}
-                      >
-                        {magazineIndex + 1}
-                      </Text>
-                      <Navigator
-                        url={`/pages/magazine/obtain?id=${magazine.id}`}
-                        className='magazine__item'
-                      >
-                        <Image className='magazine__cover' src={magazine.cover} />
-                        <Text className='magazine__title'>{magazine.title}</Text>
-                        <Text className='magazine__number'>{magazine.number}次订阅</Text>
-                      </Navigator>
-                    </View>
-                  }) :
+                  return <View key={magazine.id} className='magazine__wrap'>
+                    <Text className={`magazine__index magazine__index--${magazineIndex + 1}`}
+                      style={{ opacity: index === 0 ? 1 : 0 }}
+                    >
+                      {magazineIndex + 1}
+                    </Text>
+                    <Navigator
+                      url={`/pages/magazine/obtain?id=${magazine.id}`}
+                      className='magazine__item'
+                    >
+                      <Image className='magazine__cover' src={magazine.cover} />
+                      <Text className='magazine__title'>{magazine.title}</Text>
+                      <Text className='magazine__number'>{magazine.number}次订阅</Text>
+                    </Navigator>
+                  </View>
+                }) :
                   <View className='null-tips'>暂无数据</View>}
               </View>
             </AtTabsPane>
