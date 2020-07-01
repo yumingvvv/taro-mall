@@ -69,7 +69,7 @@ class Index extends Component {
     var day = 1;//t.currentTarget.dataset.day;
 
     // a = a == this.data.userInfo.id ? "" : a;
-debugger;
+
     _function.request("entry/wxapp/Pay", {
         id: e.state.id,
         author_id: e.state.author_id,
@@ -83,7 +83,7 @@ debugger;
         vid: s
     }, "", function(t) {
         var a = e;
-        debugger;
+
         1 == t.state ? wx.requestPayment({
             timeStamp: t.timeStamp,
             nonceStr: t.nonceStr,
@@ -91,7 +91,7 @@ debugger;
             signType: "MD5",
             paySign: t.paySign,
             success: function(t) {
-              debugger;
+
                 // wx.playBackgroundAudio({
                 //     dataUrl: a.data.datum.article.bg_music,
                 //     complete: a.onPlay

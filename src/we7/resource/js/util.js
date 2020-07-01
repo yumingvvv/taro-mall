@@ -53,7 +53,7 @@ function getSign(e, t, a) {
         i = i.concat(s);
     }
     i = n.sortBy(i, "name"), i = n.uniq(i, !0, "name");
-    for (var c = "", g = 0; g < i.length; g++) i[g] && i[g].name && i[g].value && (c += i[g].name + "=" + i[g].value, 
+    for (var c = "", g = 0; g < i.length; g++) i[g] && i[g].name && i[g].value && (c += i[g].name + "=" + i[g].value,
     g < i.length - 1 && (c += "&"));
     return o = r(c + (a = a || util.app.config.siteInfo.token));
 }
@@ -61,9 +61,9 @@ function getSign(e, t, a) {
 util.url = function(e, t, a) {
     return new Promise(function(resolve){
         getApp.default.getApp().then(function(app){
-            debugger;
+
             var n = (a = util.app).config.siteInfo.siteroot + "?i=" + a.config.siteInfo.uniacid + "&t=" + a.config.siteInfo.multiid + "&v=" + a.config.siteInfo.version + "&from=wxapp&";
-    if (e && ((e = e.split("/"))[0] && (n += "c=" + e[0] + "&"), e[1] && (n += "a=" + e[1] + "&"), 
+    if (e && ((e = e.split("/"))[0] && (n += "c=" + e[0] + "&"), e[1] && (n += "a=" + e[1] + "&"),
     e[2] && (n += "do=" + e[2] + "&")), t) for (param in t) param && t[param] && (n += "param=" + t[param] + "&");
             resolve(n);
         });
@@ -74,8 +74,8 @@ util.url = function(e, t, a) {
     (n = n || {}).cachetime = n.cachetime ? n.cachetime : 0, n.showLoading = void 0 === n.showLoading || n.showLoading;
     var a = Taro.getStorageSync("userInfo").sessionid, i = n.url;
     util.url(i).then(function(_url){
-        if (-1 == i.indexOf("http://") && -1 == i.indexOf("https://") && (i = _url), 
-    getUrlParam(i, "state") || n.data && n.data.state || !a || (i = i + "&state=we7sid-" + a), 
+        if (-1 == i.indexOf("http://") && -1 == i.indexOf("https://") && (i = _url),
+    getUrlParam(i, "state") || n.data && n.data.state || !a || (i = i + "&state=we7sid-" + a),
     !n.data || !n.data.m) {
         var o = Taro.getCurrentPages();
         o && (o = o[Taro.getCurrentPages().length - 1]).__route__ && (i = i + "&m=" + 'dg_costread'); //fixme:o.__route__.split("/")[0]);
@@ -85,8 +85,8 @@ util.url = function(e, t, a) {
     if (Taro.showNavigationBarLoading(), n.showLoading && util.showLoading(), n.cachetime) {
         var u = t(i), c = Taro.getStorageSync(u), g = Date.parse(new Date());
         if (c && c.data) {
-            if (c.expire > g) return n.complete && "function" == typeof n.complete && n.complete(c), 
-            n.success && "function" == typeof n.success && n.success(c), Taro.hideLoading(), Taro.hideNavigationBarLoading(), 
+            if (c.expire > g) return n.complete && "function" == typeof n.complete && n.complete(c),
+            n.success && "function" == typeof n.success && n.success(c), Taro.hideLoading(), Taro.hideNavigationBarLoading(),
             !0;
             Taro.removeStorageSync(u);
         }
@@ -117,7 +117,7 @@ util.url = function(e, t, a) {
     }), _defineProperty(e, "fail", function(e) {
         Taro.hideNavigationBarLoading(), Taro.hideLoading();
         var t = require("./md5.js")(i), a = Taro.getStorageSync(t);
-        if (a && a.data) return n.success && "function" == typeof n.success && n.success(a), 
+        if (a && a.data) return n.success && "function" == typeof n.success && n.success(a),
         console.log("failreadcache:" + i), !0;
         n.fail && "function" == typeof n.fail && n.fail(e);
     }), _defineProperty(e, "complete", function(e) {
@@ -125,7 +125,7 @@ util.url = function(e, t, a) {
     }), e));
     });
 
-    
+
 }, util.getUserInfo = function(a) {
     var e = function() {
         console.log("start login");
@@ -143,7 +143,7 @@ util.url = function(e, t, a) {
                     },
                     cachetime: 0,
                     success: function(e) {
-                        e.data.errno || (t.sessionid = e.data.data.sessionid, Taro.setStorageSync("userInfo", t), 
+                        e.data.errno || (t.sessionid = e.data.data.sessionid, Taro.setStorageSync("userInfo", t),
                         Taro.getUserInfo({
                             success: function(e) {
                                 t.wxInfo = e.userInfo, Taro.setStorageSync("userInfo", t), util.request({
@@ -160,7 +160,7 @@ util.url = function(e, t, a) {
                                     },
                                     cachetime: 0,
                                     success: function(e) {
-                                        e.data.errno || (t.memberInfo = e.data.data, Taro.setStorageSync("userInfo", t)), 
+                                        e.data.errno || (t.memberInfo = e.data.data, Taro.setStorageSync("userInfo", t)),
                                         "function" == typeof a && a(t);
                                     }
                                 });
@@ -217,10 +217,10 @@ util.url = function(e, t, a) {
     });
 }, util.message = function(e, t, a) {
     if (!e) return !0;
-    if ("object" == (void 0 === e ? "undefined" : _typeof(e)) && (t = e.redirect, a = e.type, 
+    if ("object" == (void 0 === e ? "undefined" : _typeof(e)) && (t = e.redirect, a = e.type,
     e = e.title), t) {
         var n = t.substring(0, 9), r = "", i = "";
-        "navigate:" == n ? (i = "navigateTo", r = t.substring(9)) : "redirect:" == n ? (i = "redirectTo", 
+        "navigate:" == n ? (i = "navigateTo", r = t.substring(9)) : "redirect:" == n ? (i = "redirectTo",
         r = t.substring(9)) : (r = t, i = "redirectTo");
     }
     a || (a = "success"), "success" == a ? Taro.showToast({
@@ -246,7 +246,7 @@ util.url = function(e, t, a) {
         }
     });
 }, util.user = util.getUserInfo, util.showLoading = function() {
-    Taro.getStorageSync("isShowLoading") && (Taro.hideLoading(), Taro.setStorageSync("isShowLoading", !1)), 
+    Taro.getStorageSync("isShowLoading") && (Taro.hideLoading(), Taro.setStorageSync("isShowLoading", !1)),
     Taro.showLoading({
         title: "加载中",
         complete: function() {
@@ -357,7 +357,7 @@ util.url = function(e, t, a) {
     }, this.toArray = function(e) {
         e = e || new Date();
         var t = Array();
-        return t[0] = e.getFullYear(), t[1] = e.getMonth(), t[2] = e.getDate(), t[3] = e.getHours(), 
+        return t[0] = e.getFullYear(), t[1] = e.getMonth(), t[2] = e.getDate(), t[3] = e.getHours(),
         t[4] = e.getMinutes(), t[5] = e.getSeconds(), t;
     }, this.datePart = function(e, t) {
         t = t || new Date();

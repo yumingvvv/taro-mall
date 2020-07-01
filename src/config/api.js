@@ -2,9 +2,10 @@
 // 局域网测试使用
 // var WxApiRoot = 'http://192.168.1.102:8080/wx/';
 // 云平台部署时使用
-var WxApiRoot = 'https://shop.xinmeitop.com/wx/';
+const WxApiRoot = 'https://shop.xinmeitop.com/wx/';
 
 export default {
+  // litemall 商城模板自带api
   IndexUrl: WxApiRoot + 'home/index', //首页数据接口
   AboutUrl: WxApiRoot + 'home/about', //介绍信息
 
@@ -96,4 +97,7 @@ export default {
 
   UserIndex: WxApiRoot + 'user/index', //个人页面用户相关信息
   IssueList: WxApiRoot + 'issue/list', //帮助信息
+
+  // 基于微擎的api对接
+  magazineHome: 'entry/wxapp/Index',
 };

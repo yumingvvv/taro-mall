@@ -40,14 +40,14 @@ class App extends Component {
       'pages/magazine-ucenter/my', //  我的账户
       'pages/index/index',
       'pages/payResult/payResult',
-          'pages/checkout/checkout',
-        'pages/goods/goods',
-        'pages/search/search',
-        'pages/catalog/catalog',
-        'pages/cart/cart',
-        'pages/groupon/myGroupon/myGroupon',
-        'pages/category/category',
-        'pages/coupon/coupon',
+      'pages/checkout/checkout',
+      'pages/goods/goods',
+      'pages/search/search',
+      'pages/catalog/catalog',
+      'pages/cart/cart',
+      'pages/groupon/myGroupon/myGroupon',
+      'pages/category/category',
+      'pages/coupon/coupon',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -71,7 +71,7 @@ class App extends Component {
         "iconPath": './static/images/home.png',
         "selectedIconPath": './static/images/home@selected.png',
         "text": "电子杂志"
-      },  {
+      }, {
         "pagePath": "pages/index/index",
         "iconPath": './static/images/cart.png',
         "selectedIconPath": './static/images/cart@selected.png',
@@ -98,48 +98,48 @@ class App extends Component {
         'subscription',//杂志订阅排行榜
       ],
     },
-    {
-      root: "pages/ucenter/",
-      name: "ucenter",
-      pages: [
-        'index/index',
-        'address/address',
-        'addressAdd/addressAdd',
-        'order/order',
-        'orderDetail/orderDetail',
-        'aftersaleList/aftersaleList',
-        'couponList/couponList',
-        'collect/collect',
-        'footprint/footprint',
-        'couponSelect/couponSelect',
-        
-      ],
-    },
-    {
-      root: "pages/auth/",
-      name: "auth",
-      pages: [
-        'login/login',
-        'accountLogin/accountLogin',
-        'register/register',
-        'reset/reset'
-      ],
-    },
-    // {
-    //   root: "pages/goods/",
-    //   name: "goods",
-    //   pages: [
-    //     'pages/checkout/checkout',
-    //     'pages/goods/goods',
-    //     'pages/search/search',
-    //     'pages/catalog/catalog',
-    //     'pages/cart/cart',
-    //     'pages/groupon/myGroupon/myGroupon',
-    //     'pages/category/category',
-    //     'pages/coupon/coupon',
-    //   ]
-    // }
-  ],
+      {
+        root: "pages/ucenter/",
+        name: "ucenter",
+        pages: [
+          'index/index',
+          'address/address',
+          'addressAdd/addressAdd',
+          'order/order',
+          'orderDetail/orderDetail',
+          'aftersaleList/aftersaleList',
+          'couponList/couponList',
+          'collect/collect',
+          'footprint/footprint',
+          'couponSelect/couponSelect',
+
+        ],
+      },
+      {
+        root: "pages/auth/",
+        name: "auth",
+        pages: [
+          'login/login',
+          'accountLogin/accountLogin',
+          'register/register',
+          'reset/reset'
+        ],
+      },
+      // {
+      //   root: "pages/goods/",
+      //   name: "goods",
+      //   pages: [
+      //     'pages/checkout/checkout',
+      //     'pages/goods/goods',
+      //     'pages/search/search',
+      //     'pages/catalog/catalog',
+      //     'pages/cart/cart',
+      //     'pages/groupon/myGroupon/myGroupon',
+      //     'pages/category/category',
+      //     'pages/coupon/coupon',
+      //   ]
+      // }
+    ],
     "networkTimeout": {
       "request": 10000,
       "downloadFile": 10000

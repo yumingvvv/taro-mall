@@ -12,9 +12,9 @@ var util = require("../js/util.js");
 
 module.exports = {
     request: function(t, e) {
-        var o = 2 < arguments.length && void 0 !== arguments[2] ? arguments[2] : 0, a = arguments[3], s = (arguments[4], 
+        var o = 2 < arguments.length && void 0 !== arguments[2] ? arguments[2] : 0, a = arguments[3], s = (arguments[4],
         5 < arguments.length && void 0 !== arguments[5] ? arguments[5] : "GET");
-        debugger;
+
         util.request({
             url: t,
             method: s,
@@ -114,7 +114,7 @@ module.exports = {
             }), Taro.setNavigationBarColor({
                 frontColor: t.frontColor,
                 backgroundColor: t.topBackcolor
-            }), Taro.setStorageSync("title", t.title), Taro.setStorageSync("share_title", t.share_title), 
+            }), Taro.setStorageSync("title", t.title), Taro.setStorageSync("share_title", t.share_title),
             1 == o && Taro.setNavigationBarTitle({
                 title: t.title
             }), Taro.setStorageSync("tabbar", t.tabbar), e.setData({
@@ -140,11 +140,11 @@ module.exports = {
                     n++;
                 },
                 complete: function(t) {
-                    console.log("res", t), a++, console.log("有更新请求"), a >= e.path.length ? console.log("成功：" + s, "失败：" + n) : (e.i = a, 
+                    console.log("res", t), a++, console.log("有更新请求"), a >= e.path.length ? console.log("成功：" + s, "失败：" + n) : (e.i = a,
                     e.success = s, e.fail = n, o.uploadImage(e));
                 }
             }) : (i.path = e.path[a], console.log(i), this.request("entry/wxapp/PublishUploads", i, "", function(t) {
-                delete i.path, console.log(i), a++, console.log("无更新请求"), a >= e.path.length || (e.i = a, 
+                delete i.path, console.log(i), a++, console.log("无更新请求"), a >= e.path.length || (e.i = a,
                 e.success = s, e.fail = n, o.uploadImage(e));
             }, this));
         }
