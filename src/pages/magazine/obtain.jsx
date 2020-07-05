@@ -3,6 +3,8 @@ import {Image, View, Text, Swiper, SwiperItem, Navigator, Button, Input} from '@
 import {AtFloatLayout} from "taro-ui";
 import './obtain.less';
 import {linkIcon} from "../../static/images";
+import api from "../../config/api";
+import {get} from "../../global_data";
 
 class Index extends Component {
 
@@ -11,15 +13,11 @@ class Index extends Component {
   };
 
   state = {
-    id: 'id',
-    name: '名字名字名字名字名字名字名字名字',
-    number: 124,
-    swiperImg: Array(4).fill({
-        imgUrl: 'http://yanxuan.nosdn.127.net/aa61b539c0f3ad675dbfd12d6fb64254.png'
-      },
-      {
-        imgUrl: 'http://yanxuan.nosdn.127.net/3dc2f889100928735ca662a71fbca862.jpg'
-      }),
+    id: '',
+    title: 'loading...',
+    zanNum: 0,
+    pay_money: '',
+    swiperImg: [],
     isOpenFloat: false,
     exchangeCode: ''
   };
@@ -30,8 +28,9 @@ class Index extends Component {
 
   componentDidMount() {
     // 页面初始化 options为页面跳转所带来的参数
-    // const {id} = this.$router.params;
-
+    const {id} = this.$router.params;
+    this.setState({id});
+    this.getDetail(id);
   }
 
   componentWillUnmount() {
@@ -43,9 +42,32 @@ class Index extends Component {
   componentDidHide() {
   }
 
+  getDetail = (id) => {
+    const app = Taro.getApp().config;
+    const _function = app._function;
+    _function.request(api.magazineDetail, {id}, "", (res) => {
+      const {article, related} = res;
+      const swiperImg = [];
+      if (article.thumb) {
+        swiperImg.push(article.thumb);
+      }
+      related.forEach(item => {
+        swiperImg.push(item.thumb)
+      });
+      this.setState({...article, swiperImg});
+    }, this, "GET");
+  };
+
   // 购买阅读码
   onBuy = () => {
+    if (!Taro.getStorageSync('openid')) {
+      Taro.navigateTo({
+        url: `/pages/magazine/auth/login`
+      });
+      return;
+    }
     const {id} = this.state;
+    this.$preload(this.state);
     Taro.navigateTo({
       url: `/pages/magazine/buy?id=${id}`
     })
@@ -75,7 +97,7 @@ class Index extends Component {
   };
 
   render() {
-    const {id, name, number, swiperImg, isOpenFloat, exchangeCode} = this.state;
+    const {id, title, zanNum, swiperImg, isOpenFloat, exchangeCode} = this.state;
     return (
       <View className='obtain'>
 
@@ -87,17 +109,17 @@ class Index extends Component {
         >
           {swiperImg.map(it => {
             return <SwiperItem
-              key={it.imgUrl}
+              key={it}
               className='swiper__item'
             >
-              <Image className='swiper__img' src={it.imgUrl}/>
+              <Image className='swiper__img' webp mode={"aspectFill"} src={it}/>
             </SwiperItem>
           })}
         </Swiper>
 
         <View className='info'>
-          <Text className='number'>{number}次订阅</Text>
-          <Text className='name'>{name}</Text>
+          <Text className='number'>{zanNum}次订阅</Text>
+          <Text className='name'>{title}</Text>
           <Navigator className='link' url={`/pages/magazine/subscription?id=-${id}`}>
             <Image className='link__icon' src={linkIcon}/>
             <Text className='link__text'>点击查看订阅排行榜</Text>

@@ -96,6 +96,7 @@ class App extends Component {
         'buy', // 杂志购买
         'obtain', //获取杂志：购买、兑换
         'subscription',//杂志订阅排行榜
+        'auth/login',//授权登录
       ],
     },
       {
@@ -145,7 +146,7 @@ class App extends Component {
       "downloadFile": 10000
     },
     "debug": true,
-  }
+  };
 
   componentWillMount() {
     this.update();
@@ -167,7 +168,7 @@ class App extends Component {
         })
       })
     }
-  }
+  };
 
   componentDidShow() {
     user.checkLogin().then(res => {

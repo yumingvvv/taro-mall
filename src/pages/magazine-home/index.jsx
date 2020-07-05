@@ -83,7 +83,7 @@ class Index extends Component {
           previousMargin='30px'
           nextMargin='30px'
         >
-          {recommend.map(it => {
+          {recommend && recommend.map(it => {
             return <SwiperItem key={it.id} className='recommend__item'>
               <Text className='recommend__title'>{it.title}</Text>
               <Text className='recommend__number'>{it.zanNum || 0}次订阅</Text>
@@ -102,7 +102,7 @@ class Index extends Component {
           onClick={this.clickTab.bind(this)}
         >
 
-          {classify.map((it, index) => {
+          {classify && classify.map((it, index) => {
             const magazineList = it.id in listObj && listObj[it.id];
             return <AtTabsPane current={curTab} index={index} key={it.id}>
               <View className='magazine'>
@@ -117,7 +117,8 @@ class Index extends Component {
                         url={`/pages/magazine/obtain?id=${magazine.id}`}
                         className='magazine__item'
                       >
-                        <Image className='magazine__cover' src={(magazine.thumb).replace('http://10.211.55.5', 'https://yumingvvv.thanks.echosite.cn')}/>
+                        <Image className='magazine__cover'
+                               src={(magazine.thumb).replace('http://10.211.55.5', 'https://yumingvvv.thanks.echosite.cn')}/>
                         <Text className='magazine__title'>{magazine.title}</Text>
                         <Text className='magazine__number'>{magazine.zanNum || 0}次订阅</Text>
                       </Navigator>
