@@ -12,7 +12,7 @@ export default {
   CatalogList: WxApiRoot + 'catalog/index', //分类目录全部分类数据接口
   CatalogCurrent: WxApiRoot + 'catalog/current', //分类目录当前分类数据接口
 
-  AuthLoginByWeixin: WxApiRoot + 'auth/login_by_weixin', //微信登录
+  AuthLoginByWeixin: WxApiRoot + 'auth/GetSessionkey', //微信登录
   AuthLoginByAccount: WxApiRoot + 'auth/login', //账号登录
   AuthLogout: WxApiRoot + 'auth/logout', //账号登出
   AuthRegister: WxApiRoot + 'auth/register', //账号注册
@@ -99,5 +99,15 @@ export default {
   IssueList: WxApiRoot + 'issue/list', //帮助信息
 
   // 基于微擎的api对接
-  magazineHome: 'entry/wxapp/Index',
+  magazineHome: 'entry/wxapp/Index',//首页
+  magazineDetail: 'entry/wxapp/Detail',//杂志详情，参数 id
+  magazinePay: 'entry/wxapp/Pay',//发起支付，amount: 100 购买数量 id: 8 //书的id author_id: 0 //作者id默认0 uid: 24 //用户id openid: oMvjs4iVK_fyx8hJQAwDQA6w5EiM money: 9.90 价格 types: 1 类型默认1 day: undefined //天数默认不填 fxid: //默认空 fopenid: null //默认空 vid: undefined //默认空
+  magazineRead: 'entry/wxapp/Read',//阅读码兑换，id: 8 //书的id readCode: 'JJG8676HK659FDNM65' //阅读码
+  magazineGetUserInfoOne: 'entry/wxapp/GetUserInfoOne',//我的账户用户信息，
+  magazineGetReadCode: 'entry/wxapp/GetReadCode',//我的阅读码，
+  magazineUserArticle: 'entry/wxapp/UserArticle',//我的杂志，
+  loginByWeixin: 'entry/wxapp/GetSessionkey', //微信登录
+
+
+
 };
