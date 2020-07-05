@@ -1,9 +1,9 @@
 module.exports = {
-    name: "电子期刊",
-    uniacid: "3",
-    acid: "3",
+    name: "凝ideal",
+    uniacid: "2",
+    acid: "2",
     multiid: "0",
     version: "1.21",
-    siteroot: "https://yumingvvv.thanks.echosite.cn/app/index.php",
+    siteroot: "https://www.ningideal.com/app/index.php",
     design_method: "3"
 };

@@ -13,7 +13,7 @@ class Index extends Component {
     id: '8',
     author_id: '0',
     userId: '24',
-    userOpenId: 'oMvjs4iVK_fyx8hJQAwDQA6w5EiM',
+    userOpenId: 'oTLpX4wLGk5Pb7PH_ZiEbjBEIM2g',//fixme
     userFopenId: 'null',
     name: '杂志名字',
     cover: 'http://yanxuan.nosdn.127.net/3dc2f889100928735ca662a71fbca862.jpg',
@@ -65,10 +65,12 @@ class Index extends Component {
 
     var n = 1;//t.currentTarget.dataset.types;
     var o = '9.90'; //t.currentTarget.dataset.money;
-    var s = 11;//t.currentTarget.dataset.vid;
-    var day = 1;//t.currentTarget.dataset.day;
+    var s;//t.currentTarget.dataset.vid;
+    var day;//t.currentTarget.dataset.day;
 
     // a = a == this.data.userInfo.id ? "" : a;
+
+    // _function.getUserinfo();
 
     _function.request("entry/wxapp/Pay", {
         id: e.state.id,
@@ -83,7 +85,7 @@ class Index extends Component {
         vid: s
     }, "", function(t) {
         var a = e;
-
+console.log(t);
         1 == t.state ? wx.requestPayment({
             timeStamp: t.timeStamp,
             nonceStr: t.nonceStr,

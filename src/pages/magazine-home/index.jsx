@@ -89,7 +89,7 @@ class Index extends Component {
               <Text className='recommend__number'>{it.zanNum || 0}次订阅</Text>
               <Navigator url={`/pages/magazine/obtain?id=${it.id}`}>
                 <Image className='recommend__cover'
-                       src={it.thumb.replace('http://10.211.55.5', 'https://yumingvvv.thanks.echosite.cn')}/>
+                       src={it.thumb}/>
               </Navigator>
             </SwiperItem>
           })}
