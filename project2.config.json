@@ -2,7 +2,7 @@
 	"miniprogramRoot": "dist/",
 	"projectname": "yuedu",
 	"description": "付费阅读",
-	"appid": "wx9a58de16bf598a9d",
+	"appid": "wx26a10025d2fd74e6",
 	"setting": {
 		"urlCheck": false,
 		"es6": false,
