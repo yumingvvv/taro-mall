@@ -4,7 +4,7 @@ import {AtFloatLayout} from "taro-ui";
 import './obtain.less';
 import {linkIcon} from "../../static/images";
 import api from "../../config/api";
-import {get} from "../../global_data";
+import {isLogin} from "../../utils/user";
 
 class Index extends Component {
 
@@ -60,7 +60,7 @@ class Index extends Component {
 
   // 购买阅读码
   onBuy = () => {
-    if (!Taro.getStorageSync('openid')) {
+    if (!isLogin()) {
       Taro.navigateTo({
         url: `/pages/magazine/auth/login`
       });
@@ -75,7 +75,7 @@ class Index extends Component {
 
   // 使用兑换码进行兑换
   onExchange = () => {
-    const {exchangeCode} = this.state;
+    const {id, exchangeCode} = this.state;
     if (!exchangeCode) {
       Taro.showToast({
         icon: 'none',
@@ -83,10 +83,23 @@ class Index extends Component {
       });
       return;
     }
-    Taro.showToast({
-      icon: 'none',
-      title: '暂时无法兑换~'
-    })
+    const app = Taro.getApp().config;
+    const _function = app._function;
+    _function.request(api.magazineRead, {id, readCode: exchangeCode}, "", (res) => {
+      const {url} = res;
+      if (url) {
+        Taro.showToast({
+          icon: 'none',
+          title: '兑换成功'
+        });
+        setTimeout(() => {
+          Taro.navigateTo({
+            url: `/pages/webview/index?url=${encodeURIComponent(url)}`
+          })
+        }, 1000)
+      }
+
+    }, this, "GET");
   };
 
   // 阅读码兑换弹层显示状态切换

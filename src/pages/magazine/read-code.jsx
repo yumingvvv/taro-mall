@@ -36,6 +36,7 @@ class Index extends Component {
   }
 
   fetchReadCode = () => {
+    // todo 我怎么知道是哪个杂志的兑换码？？
     const app = Taro.getApp().config;
     const _function = app._function;
     const openid = Taro.getStorageSync('openid');
@@ -50,11 +51,28 @@ class Index extends Component {
     return (
       <View className='read-code'>
         {list.map(item => {
-          return <AtCard
-            title={`阅读码${item.status === 1 ? "已使用" : "未使用"}`}
-          >
-            阅读码是：{item.code}
-          </AtCard>
+          return <View style={{marginBottom: "10px"}}>
+            <AtCard
+              onClick={() => {
+                Taro.setClipboardData({
+                  data: item.code
+                }).then(() => {
+                  Taro.showToast({
+                    icon: 'success',
+                    title: '已复制'
+                  })
+                }).catch(() => {
+                  Taro.showToast({
+                    icon: 'none',
+                    title: '设备暂不支持'
+                  })
+                })
+              }}
+              title={`阅读码${item.status === 1 ? "已使用" : "未使用"}`}
+            >
+              阅读码：{item.code}，点击复制
+            </AtCard>
+          </View>
         })}
 
       </View>

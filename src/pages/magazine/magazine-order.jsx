@@ -1,6 +1,7 @@
 import Taro, {Component} from '@tarojs/taro';
 import {Image, View, Text, Navigator} from '@tarojs/components';
 import './index.less';
+import api from "../../config/api";
 
 class Index extends Component {
 
@@ -19,12 +20,10 @@ class Index extends Component {
 
 
   componentWillMount() {
+    this.getOrder();
   }
 
   componentDidMount() {
-    // 页面初始化 options为页面跳转所带来的参数
-    // const {id} = this.$router.params;
-
   }
 
   componentWillUnmount() {
@@ -36,6 +35,13 @@ class Index extends Component {
   componentDidHide() {
   }
 
+  getOrder = () => {
+    const app = Taro.getApp().config;
+    const _function = app._function;
+    _function.request(api.magazineUserArticle, {}, "", (res) => {
+      console.log(res);
+    }, this, "GET");
+  };
 
   render() {
     const {list} = this.state;

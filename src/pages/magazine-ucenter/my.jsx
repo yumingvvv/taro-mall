@@ -3,6 +3,7 @@ import {Image, View, Text, Navigator} from '@tarojs/components';
 import {AtAvatar, AtList, AtListItem} from "taro-ui";
 import {sexIcon1, sexIcon2} from "../../static/images";
 import './my.less';
+import {isLogin} from "../../utils/user";
 
 class Index extends Component {
 
@@ -12,11 +13,11 @@ class Index extends Component {
 
   state = {
     id: 'id',
-    name: '名字名字名字',
-    headimg: 'http://yanxuan.nosdn.127.net/3dc2f889100928735ca662a71fbca862.jpg',
-    sex: 1,
-    magazineNum: 1,
-    codeNum: 1
+    nickName: '名字名字名字',
+    avatarUrl: 'http://yanxuan.nosdn.127.net/3dc2f889100928735ca662a71fbca862.jpg',
+    gender: 1,
+    share_profit: 1,
+    shang_profit: 1
   };
 
   myNavMenu = [
@@ -46,15 +47,20 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    // 页面初始化 options为页面跳转所带来的参数
-    // const {id} = this.$router.params;
-
   }
 
   componentWillUnmount() {
   }
 
   componentDidShow() {
+    if (!isLogin()) {
+      Taro.navigateTo({
+        url: `/pages/magazine/auth/login`
+      });
+      return;
+    }
+    const userInfo = Taro.getStorageSync('userInfo');
+    this.setState(userInfo);
   }
 
   componentDidHide() {
@@ -62,18 +68,18 @@ class Index extends Component {
 
 
   render() {
-    const {id, name, headimg, codeNum, sex, magazineNum} = this.state;
+    const {id, nickName, avatarUrl, shang_profit, gender, share_profit} = this.state;
     return (
       <View className='my'>
 
         <View className='header'>
           <Image className='header__bg' src='http://yanxuan.nosdn.127.net/c661ccc2fdcf2ab7e25129a2fa7dced0.jpg'/>
           <View className='userinfo'>
-            <AtAvatar image={headimg} size='large' circle/>
+            <AtAvatar image={avatarUrl} size='large' circle/>
             <View style={{marginLeft: '20px'}}>
-              <Text className='userinfo__name'>{name}</Text>
+              <Text className='userinfo__name'>{nickName}</Text>
               <Text className='userinfo__id'>ID: {id}</Text>
-              <Image className='userinfo__sex' src={sex === 1 ? sexIcon1 : sexIcon2}/>
+              <Image className='userinfo__sex' src={gender === 1 ? sexIcon1 : sexIcon2}/>
             </View>
           </View>
           <Navigator className='edit' url='/pages/magazine/userinfo-edit'>
@@ -83,11 +89,11 @@ class Index extends Component {
 
         <View className='data'>
           <View className='data__item'>
-            <Text className='data__item__number'>{magazineNum}</Text>
+            <Text className='data__item__number'>{share_profit}</Text>
             <Text className='data__item__text'>杂志</Text>
           </View>
           <View className='data__item'>
-            <Text className='data__item__number'>{codeNum}</Text>
+            <Text className='data__item__number'>{shang_profit}</Text>
             <Text className='data__item__text'>阅读码</Text>
           </View>
         </View>
