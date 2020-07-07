@@ -67,8 +67,6 @@ class Index extends Component {
     const {id, author_id, userId, userOpenId, pay_money, userFopenId, inputNumber, buyNumber} = this.state;
     const app = Taro.getApp().config;
     const _function = app._function;
-    // todo 获取用户个人信息
-
     _function.request(api.magazinePay, {
       id,
       uid: userId,

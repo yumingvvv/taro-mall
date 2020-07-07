@@ -48,6 +48,7 @@ class App extends Component {
       'pages/groupon/myGroupon/myGroupon',
       'pages/category/category',
       'pages/coupon/coupon',
+      'pages/webview/index',
     ],
     window: {
       backgroundTextStyle: 'light',
