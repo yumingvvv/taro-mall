@@ -16,8 +16,8 @@ class Index extends Component {
     nickName: '名字名字名字',
     avatarUrl: 'http://yanxuan.nosdn.127.net/3dc2f889100928735ca662a71fbca862.jpg',
     gender: 1,
-    share_profit: 1,
-    shang_profit: 1
+    share_profit: 0,
+    shang_profit: 0
   };
 
   myNavMenu = [

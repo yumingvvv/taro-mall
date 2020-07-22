@@ -1,8 +1,8 @@
 {
 	"miniprogramRoot": "dist/",
-	"projectname": "凝iDEAL",
-	"description": "凝iDEAL电子杂志",
-	"appid": "wx26a10025d2fd74e6",
+	"projectname": "yuedu",
+	"description": "付费阅读",
+	"appid": "wx9a58de16bf598a9d",
 	"setting": {
 		"urlCheck": false,
 		"es6": false,
@@ -13,5 +13,5 @@
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
   "condition": {},
-  "libVersion": "2.10.3"
+  "libVersion": "1.2.8"
 }

@@ -92,9 +92,18 @@ class Index extends Component {
           icon: 'none',
           title: '兑换成功'
         });
+
+        var _url = Taro.getStorageSync('currentUrl');
+        var _urlData = Taro.getStorageSync('currentUrlData');
+
+        var newUrl = url+'&id='+_urlData.id + '&readCode='+_urlData.readCode;
+        _url = _url.replace(/Read/, 'DetailImg').replace(/(.*)\?(.*)/,'$2');
+        newUrl = newUrl + '&' + _url;
+        // console.log(33333);
+        // console.log(newUrl);
         setTimeout(() => {
           Taro.navigateTo({
-            url: `/pages/webview/index?url=${encodeURIComponent(url)}`
+            url: `/pages/webview/index?url=${encodeURIComponent(newUrl)}`
           })
         }, 1000)
       }

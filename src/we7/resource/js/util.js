@@ -74,6 +74,8 @@ util.url = function(e, t, a) {
     (n = n || {}).cachetime = n.cachetime ? n.cachetime : 0, n.showLoading = void 0 === n.showLoading || n.showLoading;
     var a = Taro.getStorageSync("userInfo").sessionid, i = n.url;
     util.url(i).then(function(_url){
+        
+
         if (-1 == i.indexOf("http://") && -1 == i.indexOf("https://") && (i = _url),
     getUrlParam(i, "state") || n.data && n.data.state || !a || (i = i + "&state=we7sid-" + a),
     !n.data || !n.data.m) {
@@ -91,6 +93,10 @@ util.url = function(e, t, a) {
             Taro.removeStorageSync(u);
         }
     }
+
+    Taro.setStorageSync('currentUrl', i);
+    Taro.setStorageSync('currentUrlData', n.data ? n.data : {});
+
     Taro.request((_defineProperty(e = {
         url: i,
         data: n.data ? n.data : {},

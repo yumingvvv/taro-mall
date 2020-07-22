@@ -85,11 +85,27 @@ class Index extends Component {
         signType: "MD5",
         paySign,
       })
-        .then(() => {
+        .then((res) => {
+          console.log(res);
           Taro.showToast({
             icon: 'success',
             title: '已支付'
           });
+
+          _function.request("entry/wxapp/ProduceCode", {
+            id,
+            uid: userId,
+            openid: userOpenId,
+            money: pay_money,
+            types: 1,
+            amount: Number(buyNumber) === -1 ? inputNumber : buyNumber,
+            fxid: Taro.getStorageSync("fxid"),
+            fopenid: userFopenId,
+          }, "", function (t) {
+              //产生code之后
+              console.log(t);
+          }, this, "POST");
+
         })
         .catch((err) => {
           Taro.showToast({
