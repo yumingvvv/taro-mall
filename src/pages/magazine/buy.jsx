@@ -10,10 +10,11 @@ class Index extends Component {
     navigationBarTitleText: '订单支付'
   };
 
+  //fixme
   state = {
-    id: '8',
+    id: '',
     author_id: '0',
-    userId: '24',
+    userId: '',
     userOpenId: '',
     userFopenId: 'null',
     cover: '',
@@ -30,6 +31,13 @@ class Index extends Component {
   }
 
   componentDidMount() {
+    
+  }
+
+  componentWillUnmount() {
+  }
+
+  componentDidShow() {
     const {id} = this.$router.params;
     const preload = this.$router.preload;
     if (!id || !preload) {
@@ -43,12 +51,6 @@ class Index extends Component {
     this.fetchUserInfo();
   }
 
-  componentWillUnmount() {
-  }
-
-  componentDidShow() {
-  }
-
   componentDidHide() {
   }
 
@@ -58,7 +60,10 @@ class Index extends Component {
     const openid = Taro.getStorageSync('openid');
     this.setState({userOpenId: openid});
     _function.request(api.magazineGetUserInfoOne, {openid}, "", (res) => {
-
+      this.setState({
+        userId: res.id,
+        cover: res.avatar,
+      });
     }, this, "GET");
   };
 
@@ -104,6 +109,9 @@ class Index extends Component {
           }, "", function (t) {
               //产生code之后
               console.log(t);
+              Taro.navigateTo({
+                url: `/pages/magazine/read-code`
+              });
           }, this, "POST");
 
         })

@@ -85,7 +85,8 @@ class Index extends Component {
     }
     const app = Taro.getApp().config;
     const _function = app._function;
-    _function.request(api.magazineRead, {id, readCode: exchangeCode}, "", (res) => {
+    const openId = Taro.getStorageSync('openid');
+    _function.request(api.magazineRead, {id, readCode: exchangeCode, openId}, "", (res) => {
       const {url} = res;
       if (url) {
         Taro.showToast({
@@ -99,8 +100,8 @@ class Index extends Component {
         var newUrl = url+'&id='+_urlData.id + '&readCode='+_urlData.readCode;
         _url = _url.replace(/Read/, 'DetailImg').replace(/(.*)\?(.*)/,'$2');
         newUrl = newUrl + '&' + _url;
-        // console.log(33333);
-        // console.log(newUrl);
+        console.log(33333);
+        console.log(newUrl);
         setTimeout(() => {
           Taro.navigateTo({
             url: `/pages/webview/index?url=${encodeURIComponent(newUrl)}`

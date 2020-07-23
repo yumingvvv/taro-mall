@@ -23,6 +23,8 @@ class Index extends Component {
 
   render() {
     const {webUrl} = this.state;
+    // console.log(555555);
+    // console.log(webUrl);
     return (
       <WebView src={webUrl}/>
     );

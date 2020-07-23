@@ -28,14 +28,46 @@ class Index extends Component {
     Taro.login().then(loginRes => {
       _function.request(api.loginByWeixin, {
         code: loginRes.code,
-        userInfo: JSON.stringify(res.detail.userInfo)
-      }, '', (loginByWeixinRes) => {
-        Taro.hideLoading();
-        Taro.setStorageSync('userInfo', res.detail.userInfo);
-        Taro.setStorageSync('openid', loginByWeixinRes.openid);
-        Taro.setStorageSync('session_key', loginByWeixinRes.session_key);
-        Taro.navigateBack();
-        console.log(loginByWeixinRes);
+        // userInfo: JSON.stringify(res.detail.userInfo)
+      }, '', (t) => {
+        // Taro.hideLoading();
+        // Taro.setStorageSync('userInfo', res.detail.userInfo);
+        // Taro.setStorageSync('openid', loginByWeixinRes.openid);
+        // Taro.setStorageSync('session_key', loginByWeixinRes.session_key);
+        // Taro.navigateBack();
+        // console.log(loginByWeixinRes);
+        if(t){
+          Taro.getUserInfo({
+            withCredentials: true,
+            success: function(e){
+              var n = this;
+              _function.request("entry/wxapp/GetUserInfo", {
+                  session_key: t.session_key,
+                  encryptedData: e.encryptedData,
+                  iv: e.iv
+              }, "", function(e) {
+                  _function.request("entry/wxapp/GetUserInfoInto", {
+                      openId: e.openId,
+                      nickName: e.nickName,
+                      avatarUrl: e.avatarUrl,
+                      gender: e.gender,
+                      unionId: e.unionId
+                  }, "", function(e) {
+                    console.log(e);
+                    e['nickName'] = e.nickname;
+                    e['avatarUrl'] = e.avatar;
+                    e['gender'] = e.sex == 2 ? 1 : 0;
+                    Taro.setStorageSync("userInfo", e);
+                    Taro.setStorageSync('openid', t.openid);
+                    Taro.setStorageSync('session_key', t.session_key);
+                    Taro.navigateBack();
+                    Taro.hideLoading();
+                  }, n);
+              }, this);
+            }
+          });
+        }
+
       }, this, "POST");
     });
   };
