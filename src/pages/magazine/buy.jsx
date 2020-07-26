@@ -28,16 +28,6 @@ class Index extends Component {
 
 
   componentWillMount() {
-  }
-
-  componentDidMount() {
-    
-  }
-
-  componentWillUnmount() {
-  }
-
-  componentDidShow() {
     const {id} = this.$router.params;
     const preload = this.$router.preload;
     if (!id || !preload) {
@@ -51,10 +41,24 @@ class Index extends Component {
     this.fetchUserInfo();
   }
 
+  componentDidMount() {
+
+  }
+
+  componentWillUnmount() {
+  }
+
+  componentDidShow() {
+
+  }
+
   componentDidHide() {
   }
 
   fetchUserInfo = () => {
+    Taro.showLoading({
+      mask: true
+    });
     const app = Taro.getApp().config;
     const _function = app._function;
     const openid = Taro.getStorageSync('openid');
@@ -64,14 +68,20 @@ class Index extends Component {
         userId: res.id,
         cover: res.avatar,
       });
+      setTimeout(() => {
+        Taro.hideLoading();
+      }, 400)
     }, this, "GET");
   };
 
+  isClickPay = false;
   // 点击确定购买
   onConfrimBuy = () => {
     const {id, author_id, userId, userOpenId, pay_money, userFopenId, inputNumber, buyNumber} = this.state;
     const app = Taro.getApp().config;
     const _function = app._function;
+    if (this.isClickPay) return;
+    this.isClickPay = true;
     _function.request(api.magazinePay, {
       id,
       uid: userId,
@@ -82,6 +92,9 @@ class Index extends Component {
       fxid: Taro.getStorageSync("fxid"),
       fopenid: userFopenId,
     }, "", (res) => {
+      Taro.nextTick(() => {
+        this.isClickPay = false
+      });
       const {timeStamp, nonceStr, paySign} = res;
       Taro.requestPayment({
         timeStamp,
@@ -107,11 +120,11 @@ class Index extends Component {
             fxid: Taro.getStorageSync("fxid"),
             fopenid: userFopenId,
           }, "", function (t) {
-              //产生code之后
-              console.log(t);
-              Taro.navigateTo({
-                url: `/pages/magazine/read-code`
-              });
+            //产生code之后
+            console.log(t);
+            Taro.redirectTo({
+              url: `/pages/magazine/read-code`
+            });
           }, this, "POST");
 
         })

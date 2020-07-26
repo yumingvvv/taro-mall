@@ -29,6 +29,9 @@ class Index extends Component {
   componentDidShow() {
     if (isLogin()) {
       this.fetchReadCode();
+      Taro.showLoading({
+        mask:true
+      });
     }
   }
 
@@ -42,7 +45,10 @@ class Index extends Component {
     const openid = Taro.getStorageSync('openid');
     _function.request(api.magazineGetReadCode, {openid}, "", (res) => {
       console.log(res);
-      this.setState({list: res || []})
+      this.setState({list: res || []});
+      setTimeout(()=>{
+        Taro.hideLoading();
+      },600)
     }, this, "GET");
   };
 

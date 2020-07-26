@@ -9,7 +9,7 @@ import {isLogin} from "../../utils/user";
 class Index extends Component {
 
   config = {
-    navigationBarTitleText: '这是杂志的标题'
+    navigationBarTitleText: 'loading...'
   };
 
   state = {
@@ -43,6 +43,9 @@ class Index extends Component {
   }
 
   getDetail = (id) => {
+    Taro.showLoading({
+      mask:true
+    });
     const app = Taro.getApp().config;
     const _function = app._function;
     _function.request(api.magazineDetail, {id}, "", (res) => {
@@ -54,7 +57,13 @@ class Index extends Component {
       related.forEach(item => {
         swiperImg.push(item.thumb)
       });
+      Taro.setNavigationBarTitle({
+        title: article.title
+      });
       this.setState({...article, swiperImg});
+      setTimeout(()=>{
+        Taro.hideLoading();
+      },600)
     }, this, "GET");
   };
 
@@ -97,8 +106,8 @@ class Index extends Component {
         var _url = Taro.getStorageSync('currentUrl');
         var _urlData = Taro.getStorageSync('currentUrlData');
 
-        var newUrl = url+'&id='+_urlData.id + '&readCode='+_urlData.readCode;
-        _url = _url.replace(/Read/, 'DetailImg').replace(/(.*)\?(.*)/,'$2');
+        var newUrl = url + '&id=' + _urlData.id + '&readCode=' + _urlData.readCode;
+        _url = _url.replace(/Read/, 'DetailImg').replace(/(.*)\?(.*)/, '$2');
         newUrl = newUrl + '&' + _url;
         console.log(33333);
         console.log(newUrl);
