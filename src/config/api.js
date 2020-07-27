@@ -2,7 +2,10 @@
 // 局域网测试使用
 // var WxApiRoot = 'http://192.168.1.102:8080/wx/';
 // 云平台部署时使用
-const WxApiRoot = 'https://shop.xinmeitop.com/wx/';
+// const WxApiRoot = 'https://shop.xinmeitop.com/wx/';
+
+const WxApiRoot = 'https://mail.ningideal.com/wx/';
+
 
 export default {
   // litemall 商城模板自带api
